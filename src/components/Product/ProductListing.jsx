@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { fetchProducts } from '../../serveices/productServices';
+import { FaStar } from 'react-icons/fa';
 
 const ProductListing = () => {
     const [products, setProducts] = useState([]);
@@ -43,16 +44,16 @@ const ProductListing = () => {
         setLoading(true);
 
 
-        setTimeout(() => { 
+        setTimeout(() => {
             if (category === 'all') {
                 setFilteredProducts(products);
             } else {
                 const filtered = products.filter(product => product.category === category);
                 setFilteredProducts(filtered);
             }
-            setCurrentPage(1); 
-            
-            setLoading(false); 
+            setCurrentPage(1);
+
+            setLoading(false);
         }, 1000);
     };
     const handlePageChange = (pageNumber) => {
@@ -114,9 +115,9 @@ const ProductListing = () => {
                 </div>
 
 
-                <div>
-                    <button onClick={() => handleSort('asc')}> Low to High</button>
-                    <button onClick={() => handleSort('desc')}>High to Low</button>
+                <div className="flex flex-wrap justify-center gap-2 sm:justify-center sm:space-x-4 my-4">
+                    <button onClick={() => handleSort('asc')} className='px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-400'> Low to High</button>
+                    <button onClick={() => handleSort('desc')} className='px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-400'>High to Low</button>
                 </div>
                 <div className="container mx-auto px-4">
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -125,8 +126,13 @@ const ProductListing = () => {
                                 <img src={product.image} alt={product.title} className="w-full h-48 object-cover" />
                                 <div className="p-4">
                                     <h3 className="text-lg font-semibold">{product.title}</h3>
+                                    <div className='flex justify-between my-2'>
                                     <p className="text-gray-700">${product.price}</p>
+                                    <p className="text-gray-700">Rating {product.rating.rate}</p>
+                                    </div>
+
                                 </div>
+
                             </div>
                         ))}
                     </div>
