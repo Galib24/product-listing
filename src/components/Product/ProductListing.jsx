@@ -123,7 +123,7 @@ const ProductListing = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                         {currentProducts.map(product => (
                             <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden">
-                                <img src={product.image} alt={product.title} className="w-full h-48 object-cover" />
+                                <img src={product.image} alt={product.title} className="w-full h-48 object-cover hover:scale-110 transition duration-500 cursor-pointer" />
                                 <div className="p-4">
                                     <h3 className="text-lg font-semibold">{product.title}</h3>
                                     <div className='flex justify-between my-2'>
